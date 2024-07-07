@@ -1,4 +1,5 @@
 import { View, Text, Image, TextInput } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import React from 'react'
 import { useUser } from '@clerk/clerk-expo'
 import {Colors} from '../../constants/Colors'
@@ -7,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons'
 const Header = () => {
   const {user}=useUser()
   return (
-    <View
+    <SafeAreaView
       style={{ padding:20,paddingRight:20,backgroundColor:Colors.PRIMARY,borderBottomLeftRadius:20,borderBottomRightRadius:20 }}
     >
       <View style={{ 
@@ -41,7 +42,7 @@ const Header = () => {
         <Ionicons name="search" size={24} color={Colors.PRIMARY} style={{}}/>
         <TextInput placeholderTextColor='#000' style={{ width:'100%',fontFamily:'poppins',fontSize:16, }} placeholder='Search...'/>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 
