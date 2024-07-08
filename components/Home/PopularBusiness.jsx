@@ -15,7 +15,7 @@ const PopularBusiness = () => {
       const querySnapShot = await getDocs(q);
 
       querySnapShot.forEach(doc => {
-        setBusinessList(prev => [...prev, doc.data()])
+        setBusinessList(prev => [...prev, {id:doc.id,...doc.data()}])
       })
     }
     getBusinessList()
