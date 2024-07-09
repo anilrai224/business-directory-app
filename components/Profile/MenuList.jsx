@@ -1,6 +1,7 @@
-import { View, Text, FlatList,Image } from 'react-native'
+import { View, Text, FlatList,Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import {Colors} from '../../constants/Colors'
+import { useRouter } from 'expo-router'
 
 const MenuList = () => {
     const menuList = [
@@ -8,7 +9,7 @@ const MenuList = () => {
             id:1,
             name:'Add Business',
             icon:require('../../assets/images/add.png'),
-            path:""
+            path:"/business/add-business"
         },
         {
             id:2,
@@ -29,6 +30,10 @@ const MenuList = () => {
             path:""
         },
     ]
+    const router = useRouter()
+    const onMenuClick = (item)=>{
+        router.push(`${item.path}`)
+    }
   return (
     <View style={{ 
         marginTop:50
@@ -37,7 +42,7 @@ const MenuList = () => {
         numColumns={2}
         data={menuList}
         renderItem={({item,index})=>(
-            <View style={{ 
+            <TouchableOpacity onPress={()=>onMenuClick(item)} style={{ 
                 display:'flex',
                 flexDirection:'row',
                 alignItems:'center',
@@ -52,7 +57,7 @@ const MenuList = () => {
              }}>
                 <Image source={item.icon} style={{height:50,width:50}}/>
                 <Text style={{ fontFamily:'poppins-medium',fontSize:16,flex:1 }}>{item?.name}</Text>
-            </View>
+            </TouchableOpacity>
         )}
       />
       <Text style={{ fontFamily:'poppins',textAlign:'center',marginTop:50,color:Colors.GRAY }}>Developed by Anil Rai @ 2024</Text>
